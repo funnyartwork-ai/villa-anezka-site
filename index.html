@@ -625,6 +625,13 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   transition:background var(--t) var(--ease);
 }
 .btn-sage:hover{background:#B9CBB2}
+.link-more{
+  display:inline-block;font-size:14px;letter-spacing:.10em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;
+  border-bottom:1px solid var(--ink);padding-bottom:3px;
+  transition:opacity var(--t) var(--ease);
+}
+.link-more:hover{opacity:.6}
 
 @media(max-width:860px){
   .rooms{padding:0 16px 56px}
@@ -747,17 +754,19 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
 @media(max-width:860px){
   .lang{height:52px}
   .lang button{height:44px;min-width:46px}
+  /* зона нажатия 44px, а видимая точка — маленький круг внутри.
+     Фон гасим и у активной кнопки, иначе она красится белым квадратом целиком. */
   .carousel__dots{gap:0}
-  .carousel__dots button{
+  .carousel__dots button,
+  .carousel__dots button[aria-current="true"]{
     width:44px;height:44px;background:none;border-radius:0;
     display:grid;place-items:center;transform:none;
   }
   .carousel__dots button::after{
-    content:'';width:8px;height:8px;border-radius:999px;
-    background:rgba(255,255,255,.5);transition:background .28s,transform .28s;
+    content:'';width:9px;height:9px;border-radius:999px;
+    background:rgba(255,255,255,.55);transition:background .28s;
   }
-  .carousel__dots button[aria-current="true"]{transform:none}
-  .carousel__dots button[aria-current="true"]::after{background:#fff;transform:scale(1.25)}
+  .carousel__dots button[aria-current="true"]::after{background:#fff}
   .exp__more,.card__alt a{display:inline-block;padding:12px 0}
   .foot nav a,.menu__links a{padding:11px 0;margin-bottom:0}
   .foot__addr a{display:inline-block;padding:13px 0}
@@ -812,6 +821,72 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
   html{scroll-behavior:auto}
 }
+
+/* ═══════════════════════════════════════════════════════════
+   МОБИЛЬНАЯ ИЕРАРХИЯ
+   Один принцип на весь сайт: надзаголовок мелкий и приглушённый,
+   заголовок крупный декоративным шрифтом, дальше по убыванию —
+   описание, цена, характеристики.
+   ═══════════════════════════════════════════════════════════ */
+@media(max-width:860px){
+
+  /* ── баннер: картинка сверху, текст прижат вниз ── */
+  .feature{aspect-ratio:auto;min-height:78svh}
+  .feature::after{
+    background:linear-gradient(0deg,
+      rgba(20,24,18,.86) 0%, rgba(20,24,18,.70) 32%,
+      rgba(20,24,18,.24) 62%, rgba(20,24,18,0) 100%);
+  }
+  .feature__body{padding:0 20px 30px}
+  .feature__eyebrow{
+    font-size:12.5px;letter-spacing:.10em;font-weight:500;
+    color:rgba(255,255,255,.82);margin-bottom:12px;
+  }
+  .feature__body h3{
+    font-family:var(--font-script);font-style:italic;font-weight:500;
+    font-size:34px;line-height:1.14;letter-spacing:0;margin-bottom:16px;
+  }
+  .feature__body p{font-size:15.5px;line-height:1.5;margin-bottom:22px}
+  .btn-ghost{height:44px;line-height:44px;padding:0 22px;font-size:12px;letter-spacing:.10em}
+
+  /* ── комнаты: чёткая лестница размеров ── */
+  .room,
+  .room:nth-child(even){margin-bottom:84px}
+  .room__name{font-weight:500;font-size:38px;margin-bottom:14px}
+  .room__desc{font-size:16px;line-height:1.55;margin-bottom:18px}
+  .room__price{font-size:15px;margin-bottom:8px;color:var(--ink)}
+  .room__meta{font-size:13.5px;line-height:1.45;color:var(--ink-60);margin-bottom:26px}
+  .room .btn-sage{height:44px;line-height:44px;padding:0 22px;font-size:12px;letter-spacing:.09em}
+
+  /* ── «Around the villa» и карточки: надзаголовок мелкий, имя крупное ── */
+  .exp__head .eyebrow{
+    font-size:12.5px;letter-spacing:.10em;font-weight:500;
+    text-align:left;margin-bottom:10px;
+  }
+  .exp__head h2{font-size:30px;margin-bottom:16px}
+  .exp__lede{margin-bottom:26px}
+  .exp__nav{margin-bottom:18px}
+  .exp__cat{font-size:12.5px;letter-spacing:.10em;margin-bottom:4px}
+  .exp__card h3{font-size:26px;margin-bottom:14px}
+  .exp__card p:not(.exp__cat){margin-bottom:18px}
+
+  /* ── гастрономия ── */
+  .dining h2{font-size:30px}
+
+  /* ── футер: плотнее, адрес одним блоком ── */
+  footer{padding:44px 16px 26px}
+  .foot{gap:26px}
+  .foot__brand{gap:12px}
+  .foot__addr{font-size:14px;line-height:1.5}
+  .foot__addr a{display:inline;padding:0}
+  .foot__addr br+br{display:none}
+  .foot h3{margin-bottom:10px}
+  .foot nav a{padding:6px 0;font-size:14.5px}
+  .menu__links a{padding:6px 0}
+  .foot__legal a{padding:4px 0}
+  .foot__bottom{margin-top:30px;padding-top:18px}
+}
+
 </style>
 </head>
 <body>
@@ -1204,7 +1279,7 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
             and beers from renowned Žatec and local craft brewers, each chosen to pair
             naturally with the food at Villa Anežka.
           </p>
-          <a class="btn-sage" href="soon.html?p=Discover%20more" data-i18n="din.cta">Discover more</a>
+          <a class="link-more" href="soon.html?p=Discover%20more" data-i18n="din.cta">Read more</a>
         </div>
       </div>
     </section>
@@ -1218,7 +1293,6 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
         Hop country in every direction — forest paths, castles on the ridges, brewers in the
         town, and ski tracks once the snow settles. Most of it starts at the gate.
       </p>
-      <a class="btn-sage" href="soon.html?p=Discover%20more" data-i18n="exp.cta">Discover more</a>
     </div>
 
     <div class="exp__nav">
@@ -1279,7 +1353,7 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
       </span>
       <address class="foot__addr">
         <span data-i18n="f.addr">Chmelová 12, 438 01 Žatec<br>Czech Republic</span><br>
-        <a href="tel:+420777350123">+420 777 350 123</a><br>
+        <a href="tel:+420777350123">+420 777 350 123</a> &nbsp;·&nbsp;
         <a href="mailto:info@vila-anezka.cz">info@vila-anezka.cz</a>
       </address>
       <p class="foot__reg">IČO: 24681012 &nbsp;|&nbsp; DIČ: CZ24681012</p>
@@ -1644,7 +1718,7 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
     "din.p1": "Naše menu se řídí ročním obdobím. Čerstvý pstruh a candát, křupavá kachna, grilované steaky, farmářské sýry, mladá zelenina, čerstvé bylinky, domácí knedlíky a tradiční česká kulajda. Každý pokrm stojí na kvalitě surovin.",
     "din.p2": "Spolupracujeme s místními farmáři, sýraři, řezníky a malými producenty z regionu. Čerstvá zelenina, řemeslné sýry, pečlivě vybírané maso a místní ryby dávají naší kuchyni poctivý a osobitý charakter.",
     "din.p3": "Nápoje jsou stejně důležité. Podáváme vína z nejlepších moravských vinařství a piva od žateckých i menších řemeslných pivovarů, vždy vybraná tak, aby se k jídlu ve Vile Anežka přirozeně hodila.",
-    "din.cta": "Zjistit více",
+    "din.cta": "Číst více",
     "exp.eyebrow": "Zážitky",
     "exp.h": "V okolí vily",
     "exp.lede": "Chmelařský kraj na všechny strany — lesní cesty, zámky na hřebenech, pivovary ve městě a běžkařské stopy, jakmile napadne sníh. Většina z toho začíná za vraty.",
