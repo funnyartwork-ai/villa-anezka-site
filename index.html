@@ -30,6 +30,7 @@
   --font-display:'Instrument Serif',Georgia,serif;
   --font-script:'Cormorant Garamond',Georgia,serif;
 
+  --gutter:30px;        /* боковой отступ страницы: один на весь сайт */
   --r-pill:999px;
   --r-sm:8px;
   --r-md:9px;
@@ -218,7 +219,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   overflow:hidden;
 }
 .guide__avatar:hover{transform:scale(1.05)}
-.guide__avatar svg{width:60px}
+.guide__avatar svg{width:54px;height:54px;display:block;margin:0 auto}
 .guide__ava-wrap{position:relative;flex-shrink:0;line-height:0}
 .guide__dot{
   position:absolute;top:2px;right:2px;z-index:3;
@@ -895,6 +896,37 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
   .menu__links a{padding:6px 0}
   .foot__legal a{padding:4px 0}
   .foot__bottom{margin-top:30px;padding-top:18px}
+}
+
+
+/* ═══════════════════════════════════════════════════════════
+   ОДНА ЛИНИЯ ОТСТУПА
+   Весь текст на странице начинается от --gutter, независимо от того,
+   лежит он в карточке или нет. Карточки на телефоне разворачиваются
+   во всю ширину, а отступ переносится внутрь — иначе их содержимое
+   уезжает на 34-36px и ломает вертикаль.
+   ═══════════════════════════════════════════════════════════ */
+@media(max-width:860px){
+  :root{--gutter:16px}
+
+  .section,.rooms,.dining-wrap,.exp__head,.exp__nav{padding-left:var(--gutter);padding-right:var(--gutter)}
+  footer{padding-left:var(--gutter);padding-right:var(--gutter)}
+
+  /* карточки — во всю ширину, отступ внутрь */
+  .feature,.dining{
+    margin-left:calc(-1 * var(--gutter));
+    margin-right:calc(-1 * var(--gutter));
+    border-radius:0;
+  }
+  .feature__body{padding-left:var(--gutter);padding-right:var(--gutter)}
+  .dining{padding-left:var(--gutter);padding-right:var(--gutter)}
+
+  /* лента впечатлений: слева отступ контейнера, справа распорка.
+     Через ::before не выйдет — к нему прибавляется flex-gap и даёт 34px. */
+  .exp__rail{padding-left:var(--gutter)}
+  .exp__rail::before{display:none}
+  .exp__rail::after{flex:0 0 var(--gutter)}
+  .exp__nav{justify-content:flex-end;padding-right:var(--gutter)}
 }
 
 </style>
