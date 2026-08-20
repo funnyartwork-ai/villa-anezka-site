@@ -969,10 +969,9 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
   -->
   <video class="hero__media" id="heroMedia"
          poster="img/hero-villa.jpg"
+         data-desktop="hero.mp4" data-mobile="hero-mobile.mp4"
          autoplay muted loop playsinline
-         aria-label="Villa Anežka above the hop gardens at sunset">
-    <source src="hero.mp4" type="video/mp4">
-  </video>
+         aria-label="Villa Anežka above the hop gardens at sunset"></video>
   <div class="hero__scrim"></div>
 
   <!-- верхняя панель -->
@@ -1484,6 +1483,17 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
 
     window.__vaDates = () => ({ from: fFrom.value, to: fTo.value });
     sync();
+  })();
+
+  /* ── какое видео играть: вертикальное на телефоне, горизонтальное на экране ──
+     Источник ставится до старта, иначе браузер успеет начать грузить не тот файл. */
+  (() => {
+    const v = document.getElementById('heroMedia');
+    if (!v) return;
+    const src = matchMedia('(max-width: 860px)').matches ? v.dataset.mobile : v.dataset.desktop;
+    v.src = src;
+    v.load();
+    v.play().catch(() => {});   /* автозапуск может быть запрещён — тогда остаётся постер */
   })();
 
   /* ── звук ── */
