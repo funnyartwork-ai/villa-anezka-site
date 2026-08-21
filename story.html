@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Legend of Villa Anežka</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,400;1,500&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bone:#F5F3EE;
+  --sage-mist:#C9D6C2;   /* плашка рейтинга */
+  --sage:#A2B599;
+  --olive:#6E7F60;
+  --olive-deep:#3F4A38;
+  --ink:#1C211B;
+  --ink-60:rgba(28,33,27,.60);
+
+  --glass:rgba(64,60,54,.52);
+  --glass-hover:rgba(64,60,54,.70);
+  --blur:blur(12px) saturate(1.05);
+
+  --font-ui:'Instrument Sans',system-ui,-apple-system,sans-serif;
+  --font-display:'Instrument Serif',Georgia,serif;
+  --font-script:'Cormorant Garamond',Georgia,serif;
+
+  --gutter:30px;        /* боковой отступ страницы: один на весь сайт */
+  --r-pill:999px;
+  --r-sm:8px;
+  --r-md:9px;
+  --r-lg:10px;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --t:280ms;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font-ui);
+  background:var(--bone);
+  color:var(--ink);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--bone);outline-offset:3px;border-radius:4px}
+
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--font-ui);background:var(--bone);color:var(--ink);line-height:1.75;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--olive);outline-offset:3px;border-radius:4px}
+svg{fill:none;stroke:currentColor}
+
+.top{display:flex;align-items:center;justify-content:space-between;padding:20px 30px}
+.top__back{display:inline-flex;align-items:center;gap:9px;height:40px;padding:0 16px 0 12px;
+  border-radius:999px;background:rgba(28,33,27,.07);font-size:12.5px;letter-spacing:.08em;
+  text-transform:uppercase;text-decoration:none;color:var(--ink);transition:background .28s}
+.top__back:hover{background:rgba(28,33,27,.13)}
+.top__back svg{width:14px;height:14px;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.top__mark{width:52px;color:var(--ink)}
+.lang{display:flex;background:rgba(28,33,27,.07);border-radius:999px;padding:3px}
+.lang button{height:34px;min-width:44px;border-radius:999px;font-size:11.5px;font-weight:500;color:var(--ink-60);transition:all .28s}
+.lang button[aria-current="true"]{background:#fff;color:var(--ink)}
+
+.hero-img{max-width:1180px;margin:16px auto 0;padding:0 30px}
+.hero-img img{width:100%;max-width:520px;display:block;margin:0 auto;border-radius:6px;
+  box-shadow:0 18px 50px rgba(20,24,18,.18)}
+
+.story{max-width:720px;margin:0 auto;padding:56px 30px 110px}
+.story__eyebrow{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--olive);text-align:center;margin-bottom:18px;font-weight:500}
+.story h1{font-family:var(--font-display);font-weight:400;font-size:clamp(32px,5vw,50px);
+  line-height:1.14;text-align:center;margin-bottom:48px;text-wrap:balance}
+.story p{font-size:17px;line-height:1.78;margin-bottom:26px}
+.story p strong{font-weight:600}
+.story__lead{font-family:var(--font-script);font-style:italic;font-size:26px;
+  line-height:1.4;text-align:center;color:var(--olive-deep);margin:44px 0 32px}
+.story__close{font-family:var(--font-script);font-style:italic;font-size:23px;line-height:1.45;
+  text-align:center;color:var(--olive-deep);margin-top:44px;padding-top:34px;
+  border-top:1px solid rgba(28,33,27,.14)}
+.story__back{display:block;width:fit-content;margin:52px auto 0;height:50px;line-height:50px;
+  padding:0 30px;background:var(--sage-mist);border-radius:5px;font-size:13px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--ink);text-decoration:none;transition:background .28s}
+.story__back:hover{background:#B9CBB2}
+
+@media(max-width:760px){
+  .top{padding:14px 16px}
+  .hero-img{padding:0 16px}
+  .story{padding:38px 16px 70px}
+  .story p{font-size:16px;line-height:1.7;margin-bottom:22px}
+  .story__lead{font-size:22px;margin:34px 0 26px}
+  .story__close{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="top__back" href="index.html">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    <span data-t="back">Back</span>
+  </a>
+  <a class="top__mark" href="index.html" aria-label="Vila Anežka"><svg viewBox="23 28 54 52" fill="none" xmlns="http://www.w3.org/2000/svg"
+ stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M 27,31.5 L 73,31.5"/>
+  <path d="M 29.5,34.5 L 70.5,34.5" stroke-width="0.8" opacity=".55"/>
+  <path d="M 27.14,46.25 L 26.89,45.61 L 26.71,44.96 L 26.57,44.30 L 26.49,43.64 L 26.47,42.99 L 26.49,42.34 L 26.57,41.70 L 26.70,41.07 L 26.88,40.46 L 27.11,39.88 L 27.38,39.32 L 27.69,38.80 L 28.04,38.30 L 28.42,37.84 L 28.84,37.42 L 29.28,37.03 L 29.75,36.69 L 30.24,36.39 L 30.75,36.14 L 31.27,35.93 L 31.80,35.76 L 32.34,35.64 L 32.87,35.57 L 33.41,35.54 L 33.94,35.55 L 34.46,35.61 L 34.96,35.71 L 35.45,35.84 L 35.92,36.02 L 36.37,36.23 L 36.80,36.47 L 37.20,36.75 L 37.57,37.05 L 37.91,37.38 L 38.21,37.73 L 38.49,38.10 L 38.72,38.48 L 38.93,38.88 L 39.09,39.28 L 39.22,39.70 L 39.32,40.11 L 39.38,40.53 L 39.40,40.94 L 39.39,41.35 L 39.34,41.75 L 39.27,42.13 L 39.16,42.51 L 39.03,42.86 L 38.86,43.20 L 38.68,43.52 L 38.47,43.82 L 38.24,44.09 L 37.99,44.34 L 37.73,44.56 L 37.45,44.75 L 37.17,44.92 L 36.88,45.06 L 36.58,45.18 L 36.28,45.26 L 35.98,45.32 L 35.68,45.35 L 35.39,45.36 L 35.10,45.34 L 34.82,45.29 L 34.56,45.23 L 34.30,45.14 L 34.06,45.03 L 33.84,44.91 L 33.63,44.77 L 33.44,44.62 L 33.27,44.45 L 33.12,44.28 L 32.99,44.09 L 32.88,43.90 L 32.79,43.71 L 32.72,43.51 L 32.67,43.32 L 32.64,43.13 L 32.63,42.94 L 32.64,42.75 L 32.66,42.58 L 32.70,42.41 L 32.75,42.25 L 32.82,42.11 L 32.89,41.97 L 32.98,41.85 L 33.08,41.74 L 33.18,41.65 L 33.29,41.57 L 33.40,41.51"/>
+  <path d="M 72.86,46.25 L 73.11,45.61 L 73.29,44.96 L 73.43,44.30 L 73.51,43.64 L 73.53,42.99 L 73.51,42.34 L 73.43,41.70 L 73.30,41.07 L 73.12,40.46 L 72.89,39.88 L 72.62,39.32 L 72.31,38.80 L 71.96,38.30 L 71.58,37.84 L 71.16,37.42 L 70.72,37.03 L 70.25,36.69 L 69.76,36.39 L 69.25,36.14 L 68.73,35.93 L 68.20,35.76 L 67.66,35.64 L 67.13,35.57 L 66.59,35.54 L 66.06,35.55 L 65.54,35.61 L 65.04,35.71 L 64.55,35.84 L 64.08,36.02 L 63.63,36.23 L 63.20,36.47 L 62.80,36.75 L 62.43,37.05 L 62.09,37.38 L 61.79,37.73 L 61.51,38.10 L 61.28,38.48 L 61.07,38.88 L 60.91,39.28 L 60.78,39.70 L 60.68,40.11 L 60.62,40.53 L 60.60,40.94 L 60.61,41.35 L 60.66,41.75 L 60.73,42.13 L 60.84,42.51 L 60.97,42.86 L 61.14,43.20 L 61.32,43.52 L 61.53,43.82 L 61.76,44.09 L 62.01,44.34 L 62.27,44.56 L 62.55,44.75 L 62.83,44.92 L 63.12,45.06 L 63.42,45.18 L 63.72,45.26 L 64.02,45.32 L 64.32,45.35 L 64.61,45.36 L 64.90,45.34 L 65.18,45.29 L 65.44,45.23 L 65.70,45.14 L 65.94,45.03 L 66.16,44.91 L 66.37,44.77 L 66.56,44.62 L 66.73,44.45 L 66.88,44.28 L 67.01,44.09 L 67.12,43.90 L 67.21,43.71 L 67.28,43.51 L 67.33,43.32 L 67.36,43.13 L 67.37,42.94 L 67.36,42.75 L 67.34,42.58 L 67.30,42.41 L 67.25,42.25 L 67.18,42.11 L 67.11,41.97 L 67.02,41.85 L 66.92,41.74 L 66.82,41.65 L 66.71,41.57 L 66.60,41.51"/>
+  <path d="M 34.5,50.5 Q 50,57 65.5,50.5" stroke-width="0.9"/>
+  <path d="M 50,53 L 50,57.5" stroke-width="0.9"/>
+  <path d="M 50,57.5 Q 41,60 41.5,66 Q 42,72 50,76.5 Q 58,72 58.5,66 Q 59,60 50,57.5 Z"/>
+  <path d="M 43.5,62.5 Q 50,66 56.5,62.5" stroke-width="0.75" opacity=".8"/>
+  <path d="M 44,68.5 Q 50,71.5 56,68.5" stroke-width="0.75" opacity=".8"/>
+  <path d="M 50,58.5 L 50,74" stroke-width="0.6" opacity=".45"/>
+</svg></a>
+  <div class="lang" role="group" aria-label="Language">
+    <button aria-current="true" data-lang="en">EN</button>
+    <button aria-current="false" data-lang="cs">CZ</button>
+  </div>
+</header>
+
+<figure class="hero-img">
+  <img src="img/anezka-portrait.jpg" alt="Anežka Sokołowska in the library of the villa">
+</figure>
+
+<main class="story">
+  <p class="story__eyebrow" data-t="eyebrow">Our story</p>
+  <h1 data-t="title">The Legend of Villa Anežka</h1>
+  
+      <p data-t="p0">It is said that in 1913, Anežka Sokołowska and her husband, Viktor König, decided to build a house among the rolling hills and hop fields of the Žatec region.</p>
+      <p data-t="p1">Viktor was a prosperous hop merchant, but for Anežka, the house was meant to be more than a country residence. She was a woman of the arts, with a deep love of music, painting, literature and architecture. She dreamed of creating a place where one could escape Prague — to work, to think, to talk, and simply to be together.</p>
+      <p data-t="p2">To bring the house to life, they commissioned the young Prague architect <strong>Karel Vojtěch</strong>, known for combining the elegance of Art Nouveau with the emerging spirit of the new century. Together, they envisioned a villa closely connected to its surroundings: its generous windows opening towards the hop fields, forests and distant hills.</p>
+      <p data-t="p3">Before long, Villa Anežka became a meeting place for artists, musicians, writers and actors. During the summer months, guests arrived from Prague — some for a few days, others for several weeks. There were musical evenings, conversations about art, passionate debates about the changing times, and long walks along the country roads.</p>
+      <p class="story__lead" data-t="p4">The villa also carries an old story.</p>
+      <p data-t="p5">It is said that <strong>Bedřich Smetana</strong> once stopped here and stayed longer than he had intended. There is no way to prove the story today. Yet the house still has a chair by the library window which, according to local tradition, was once chosen by the celebrated composer himself.</p>
+      <p data-t="p6">Whether it is true or not, no one can say.</p>
+      <p data-t="p7">But perhaps this is how the memory of a house is made.</p>
+      <p class="story__close" data-t="p8">Some things are written into history. Others are simply passed down from one generation to the next.</p>
+  <a class="story__back" href="index.html" data-t="cta">Back to the villa</a>
+</main>
+
+<script>
+(() => {
+  'use strict';
+  const CS = {
+    back: 'Zpět',
+    eyebrow: 'Náš příběh',
+    title: 'Legenda Villa Anežka',
+    cta: 'Zpět na vilu',
+    p0: "Říká se, že v roce 1913 se Anežka Sokołowska a její manžel Viktor König rozhodli postavit dům mezi zvlněnými kopci a chmelnicemi Žatecka.",
+    p1: "Viktor byl úspěšným obchodníkem s chmelem, ale pro Anežku měl být tento dům něčím víc než jen letním sídlem. Byla ženou umění a milovala hudbu, malířství, literaturu i architekturu. Toužila vytvořit místo, kam by bylo možné uniknout z Prahy — pracovat, přemýšlet, rozmlouvat a jednoduše být spolu.",
+    p2: "Na návrhu domu se proto podílel mladý pražský architekt <strong>Karel Vojtěch</strong>, známý schopností spojovat eleganci secese s novým duchem nastupujícího století. Společně vytvořili vilu, která měla být přirozenou součástí okolní krajiny. Velká okna se otevírala směrem k chmelnicím, lesům a vzdáleným kopcům.",
+    p3: "Villa Anežka se brzy stala místem setkávání umělců, hudebníků, spisovatelů a herců. V letních měsících sem přijížděli hosté z Prahy — někteří na několik dní, jiní na celé týdny. Konaly se zde hudební večery, vedly se rozhovory o umění, vášnivě se diskutovalo o měnící se době a podnikaly se dlouhé procházky okolními cestami.",
+    p4: "S vilou se pojí také jeden starý příběh.",
+    p5: "Říká se, že se zde jednou zastavil <strong>Bedřich Smetana</strong> a zůstal déle, než původně zamýšlel. Dnes už není možné tuto historku potvrdit. V domě však stále stojí křeslo u okna knihovny, o kterém se podle místní tradice vypráví, že si je kdysi vybral sám slavný skladatel.",
+    p6: "Zda je to pravda, dnes už nikdo neví.",
+    p7: "Možná právě tak vzniká paměť domu.",
+    p8: "Některé věci jsou zapsány v historii. Jiné se jednoduše předávají z generace na generaci."
+  };
+  const nodes = [...document.querySelectorAll('[data-t]')];
+  nodes.forEach(n => n.dataset.en = n.innerHTML);
+  const apply = lang => {
+    nodes.forEach(n => n.innerHTML = (lang === 'cs' && CS[n.dataset.t]) ? CS[n.dataset.t] : n.dataset.en);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang button')
+      .forEach(b => b.setAttribute('aria-current', String(b.dataset.lang === lang)));
+    try { localStorage.setItem('va-lang', lang); } catch (e) {}
+  };
+  document.querySelectorAll('.lang button').forEach(b =>
+    b.addEventListener('click', () => apply(b.dataset.lang)));
+  let saved = 'en';
+  try { saved = localStorage.getItem('va-lang') || 'en'; } catch (e) {}
+  if (saved === 'cs') apply('cs');
+})();
+</script>
+</body>
+</html>

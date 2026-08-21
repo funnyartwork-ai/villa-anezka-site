@@ -969,6 +969,15 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
   position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
 }
 
+
+/* «Begins» ведёт на легенду виллы */
+.h-link{
+  color:inherit;text-decoration:none;
+  border-bottom:1.5px solid rgba(28,33,27,.35);
+  padding-bottom:2px;
+  transition:border-color var(--t) var(--ease),color var(--t) var(--ease);
+}
+.h-link:hover{color:var(--olive);border-color:var(--olive)}
 </style>
 </head>
 <body>
@@ -1010,7 +1019,7 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
       <a href="soon.html?p=Offers" data-i18n="m.offers">Offers</a>
       <a href="soon.html?p=Private%20Events" data-i18n="m.private">Private Events</a>
       <a href="soon.html?p=Local%20Events" data-i18n="m.local">Local Events</a>
-      <a href="soon.html?p=Our%20Story" data-i18n="m.story">Our Story</a>
+      <a href="story.html" data-i18n="m.story">Our Story</a>
     </nav>
   </div>
 
@@ -1243,7 +1252,7 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
 <!-- ═══════════════ НИЖЕ ═══════════════ -->
 <main id="top">
   <section class="section">
-    <h2 data-i18n="s2.h">This Is Where Villa Anežka Begins</h2>
+    <h2 data-i18n="s2.h">This Is Where Villa Anežka <a class="h-link" href="story.html">Begins</a></h2>
     <p class="section__lede" data-i18n="s2.lede">
       A secluded Bohemian estate where hop fields, art, and hospitality come
       together in the timeless landscape of&nbsp;the Žatec countryside.
@@ -1450,7 +1459,7 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
     </div>
     <div>
       <h3 data-i18n="f.discover">Discover</h3>
-      <nav><a href="soon.html?p=Our%20Story" data-i18n="fl.7">Our Story</a><a href="soon.html?p=The%20Hop%20Country" data-i18n="fl.8">The Hop Country</a><a href="soon.html?p=Gallery" data-i18n="fl.9">Gallery</a><a href="soon.html?p=Journal" data-i18n="fl.10">Journal</a></nav>
+      <nav><a href="story.html" data-i18n="fl.7">Our Story</a><a href="soon.html?p=The%20Hop%20Country" data-i18n="fl.8">The Hop Country</a><a href="soon.html?p=Gallery" data-i18n="fl.9">Gallery</a><a href="soon.html?p=Journal" data-i18n="fl.10">Journal</a></nav>
     </div>
     <div>
       <h3 data-i18n="f.connect">Connect</h3>
@@ -1789,7 +1798,7 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
     "guide.msg": "Jsem Anežka, vaše průvodkyně — ráda poradím.",
     "rating.label": "Výborné",
     "rating.count": "zatím bez recenzí",
-    "s2.h": "Zde začíná Vila Anežka",
+    "s2.h": "Zde <a class=\"h-link\" href=\"story.html\">začíná</a> Vila Anežka",
     "s2.lede": "Odlehlé české sídlo, kde se chmelnice, umění a pohostinnost potkávají v nadčasové krajině Žatecka.",
     "s2.eyebrow": "Dědictví a krajina",
     "s2.h3": "České útočiště utvářené chmelem, historií a tichou krásou",
