@@ -1645,6 +1645,21 @@ footer{background:var(--olive-deep);color:rgba(245,243,238,.72);padding:90px 30p
     sync();
   })();
 
+  /* ── если мобильного кадра нет на сервере, показываем десктопный ──
+     <picture> сам на запасной вариант не откатывается: не найдя файл из srcset,
+     он оставляет пустоту. Поэтому подстраховываемся вручную. */
+  (() => {
+    const im = document.querySelector('.feature img');
+    if (!im) return;
+    im.addEventListener('error', () => {
+      const src = im.getAttribute('src');
+      if (im.currentSrc !== new URL(src, location.href).href) {
+        im.closest('picture')?.querySelectorAll('source').forEach(s => s.remove());
+        im.src = src;
+      }
+    });
+  })();
+
   /* ── какое видео играть: вертикальное на телефоне, горизонтальное на экране ──
      Источник ставится до старта, иначе браузер успеет начать грузить не тот файл. */
   (() => {
